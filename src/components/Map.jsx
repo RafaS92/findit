@@ -1,4 +1,4 @@
-import { useMemo} from "react";
+import { useMemo,useRef,useCallback} from "react";
 import {
   GoogleMap
 } from "@react-google-maps/api";
@@ -8,14 +8,24 @@ import "../css/map.css"
 
 
 export default function Map() {
-    const center = useMemo(()=>({lat:parseFloat("43"),lng:parseFloat("-80") }),[]) 
+  const mapRef = useRef()
+  //To ensure values will keep the same every re-render.
+  const center = useMemo(()=>({lat:parseFloat("43"),lng:parseFloat("-80") }),[]) 
+  //To optimize re-rendering
+  const onLoad = useCallback((map) => (mapRef.current = map), [])
+  const options = useMemo(()=> ({disabledDefaultUI: true,clickableIcons: false,}),[])
   return (
     <div className="container-map">
         <div className="controls">
             <h1>Commute</h1>
         </div>
         <div className="map">
-            <GoogleMap zoom={10} center={center} mapContainerClassName="map-container"></GoogleMap>
+            <GoogleMap zoom={10}
+              center={center}
+              mapContainerClassName="map-container"
+              options={options}
+              onLoad={onLoad}
+            ></GoogleMap>
         </div>
     </div>
   )
