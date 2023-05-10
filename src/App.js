@@ -11,7 +11,7 @@ function App() {
   const Root = () => {
     return (
     <>
-      <div>
+      <div className='app-container'>
         <Link to="/">Home</Link>
         <Link to="comute">Comute</Link>
         <Link to="search">Search</Link>
@@ -27,7 +27,7 @@ function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route exact path='/' element={<Root/>} >
-         <Route exact index element={<Home />} />
+        <Route exact index element={<Home />} />
         <Route exact path='/comute' element={<Comute />} />
         <Route exact path='/search' element={<Search />} />
       </Route>  
