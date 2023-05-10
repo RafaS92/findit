@@ -1,13 +1,15 @@
-import { useMemo,useRef,useCallback} from "react";
+import {useState,useMemo,useRef,useCallback} from "react";
 import {
   GoogleMap
 } from "@react-google-maps/api";
 import "../css/map.css"
+import Places from "./Places";
 
 
 
 
 export default function Map() {
+  const [place,setPlace] = useState()
   const mapRef = useRef()
   //To ensure values will keep the same every re-render.
   const center = useMemo(()=>({lat:parseFloat("43"),lng:parseFloat("-80") }),[]) 
@@ -18,6 +20,10 @@ export default function Map() {
     <div className="container-map">
         <div className="controls">
             <h1>Commute</h1>
+            <Places setPlace={(position) => {
+              setPlace(position);
+              mapRef.current?.panTo(position)
+            }}/>
         </div>
         <div className="map">
             <GoogleMap zoom={10}
