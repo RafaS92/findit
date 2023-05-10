@@ -2,6 +2,9 @@ import {useState,useMemo,useRef,useCallback} from "react";
 import {
   GoogleMap,
   Marker,
+  Circle,
+  DirectionsRenderer,
+  MarkerClusterer
 } from "@react-google-maps/api";
 import "../css/map.css"
 import Places from "./Places";
@@ -33,7 +36,14 @@ export default function Map() {
               options={options}
               onLoad={onLoad}
             >
-              {place && <Marker position={place}/>}
+              {place && (
+                <>
+                  <Marker position={place} />
+                  <Circle center={place} radius={5000} options={nearOptions} />
+                  <Circle center={place} radius={20000} options={farOptions} />
+                  <Circle center={place} radius={40000} options={notRecomendedOptions} />
+                </>
+              )}
             </GoogleMap>
         </div>
     </div>
@@ -49,21 +59,21 @@ const defaultOptions = {
   editable: false,
   visible: true,
 };
-const closeOptions = {
+const nearOptions = {
   ...defaultOptions,
   zIndex: 3,
   fillOpacity: 0.05,
-  strokeColor: "#8BC34A",
-  fillColor: "#8BC34A",
+  strokeColor: "#5aff14",
+  fillColor: "#5aff14",
 };
-const middleOptions = {
+const farOptions = {
   ...defaultOptions,
   zIndex: 2,
   fillOpacity: 0.05,
-  strokeColor: "#FBC02D",
-  fillColor: "#FBC02D",
+  strokeColor: "#ff9d00",
+  fillColor: "#ff9d00",
 };
-const farOptions = {
+const notRecomendedOptions = {
   ...defaultOptions,
   zIndex: 1,
   fillOpacity: 0.05,
