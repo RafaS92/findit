@@ -1,6 +1,7 @@
 import {useState,useMemo,useRef,useCallback} from "react";
 import {
-  GoogleMap
+  GoogleMap,
+  Marker,
 } from "@react-google-maps/api";
 import "../css/map.css"
 import Places from "./Places";
@@ -31,7 +32,9 @@ export default function Map() {
               mapContainerClassName="map-container"
               options={options}
               onLoad={onLoad}
-            ></GoogleMap>
+            >
+              {place && <Marker position={place}/>}
+            </GoogleMap>
         </div>
     </div>
   )

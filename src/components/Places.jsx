@@ -14,8 +14,18 @@ import "@reach/combobox/styles.css";
 
 function Places({setPlace}) {
     const {ready,value,setValue,suggestions:{status,data},clearSuggestions} = usePlacesAutocomplete()
+
+    const handleSelect = async (place) => {
+      setValue(place,false)
+      clearSuggestions()
+
+      const resulst = await getGeocode({address:place})
+      const {lat,lng} = await getLatLng(resulst[0])
+      setPlace({lat,lng})
+    }
+
   return (
-    <Combobox onSelect={() => {}}>
+    <Combobox onSelect={handleSelect}>
         <ComboboxInput 
          value={value}
          onChange={e => setValue(e.target.value)} 
