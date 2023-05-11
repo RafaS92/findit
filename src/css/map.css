@@ -1,17 +1,24 @@
-.container-map{
+.container-map {
     display: flex;
     height: 100vh;
 }
 
-.controls{
-    width: 20%;
+.controls {
+    width: 25%;
     padding: 1rem;
-    background-color: black;
-    color: white;
+    background-color: whitesmoke;
+    color: black;
 }
 
-.controls input{
+.controls input {
     border: none;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 12px;
 }
 
 .map-container {
@@ -23,4 +30,3 @@
     width: 80%;
     height: 100vh;
 }
-

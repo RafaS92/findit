@@ -16,10 +16,15 @@ function App() {
   const Root = () => {
     return (
       <>
-        <div className="app-container">
-          <Link to="/">Home</Link>
-          <Link to="comute">Comute</Link>
-          <Link to="search">Search</Link>
+        <div className="nav-container">
+          <div className="nav-sec-1">
+            <Link to="/perlas">Home</Link>
+          </div>
+          <div className="nav-sec-2">
+            <Link to="/">Home</Link>
+            <Link to="comute">Comute</Link>
+            <Link to="search">Search</Link>
+          </div>
         </div>
         <div>
           <Outlet />

@@ -11,6 +11,7 @@ import {
   ComboboxOption,
 } from "@reach/combobox";
 import "@reach/combobox/styles.css";
+import ImageSearchIcon from '@mui/icons-material/ImageSearch';
 
 function Places({setPlace}) {
     const {ready,value,setValue,suggestions:{status,data},clearSuggestions} = usePlacesAutocomplete()
@@ -26,13 +27,17 @@ function Places({setPlace}) {
 
   return (
     <Combobox onSelect={handleSelect}>
-        <ComboboxInput 
-         value={value}
-         onChange={e => setValue(e.target.value)} 
-         className="combobox-input"
-         disabled={!ready}
-         placeholder="Where you going?"
-        />
+        <div className="search-container">
+          <ImageSearchIcon />
+          <ComboboxInput 
+          value={value}
+          onChange={e => setValue(e.target.value)} 
+          className="combobox-input"
+          disabled={!ready}
+          placeholder="Where you going?"
+          />
+        </div>
+
          <ComboboxPopover>
           <ComboboxList>
             {status === 'OK' && data.map(suggestion => (
