@@ -13,6 +13,22 @@
 }
 
 .nav-container div {
-  background-color: red;
   flex: 1;
+}
+
+.nav-element {
+  text-decoration: none !important;
+  color: bisque;
+  font-size: 1.2rem;
+  font-family: math;
+}
+
+.nav-sec-1 {
+  display: flex;
+  justify-content: start;
+}
+
+.nav-sec-2 {
+  display: flex;
+  justify-content: space-evenly
 }

@@ -18,12 +18,12 @@ function App() {
       <>
         <div className="nav-container">
           <div className="nav-sec-1">
-            <Link to="/perlas">Home</Link>
+            <Link className="nav-element" to="/perlas">Home</Link>
           </div>
           <div className="nav-sec-2">
-            <Link to="/">Home</Link>
-            <Link to="comute">Comute</Link>
-            <Link to="search">Search</Link>
+            <Link className="nav-element" to="/">Home</Link>
+            <Link className="nav-element" to="comute">Comute</Link>
+            <Link className="nav-element" to="search">Search</Link>
           </div>
         </div>
         <div>
