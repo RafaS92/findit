@@ -9,8 +9,8 @@ import {
   Outlet,
 } from "react-router-dom";
 import Comute from "./components/Comute";
-import Search from "./components/Search";
 import Home from "./components/Home ";
+import About from "./components/About";
 
 function App() {
   const Root = () => {
@@ -23,7 +23,7 @@ function App() {
           <div className="nav-sec-2">
             <Link className="nav-element" to="/">Home</Link>
             <Link className="nav-element" to="comute">Comute</Link>
-            <Link className="nav-element" to="search">Search</Link>
+            <Link className="nav-element" to="about">About</Link>
           </div>
         </div>
         <div>
@@ -38,7 +38,7 @@ function App() {
       <Route exact path="/" element={<Root />}>
         <Route exact index element={<Home />} />
         <Route exact path="/comute" element={<Comute />} />
-        <Route exact path="/search" element={<Search />} />
+        <Route exact path="/about" element={<About />} />
       </Route>
     )
   );
