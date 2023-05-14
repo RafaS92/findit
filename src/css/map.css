@@ -12,6 +12,12 @@
 
 .controls input {
     border: none;
+    padding: 0px 10px;
+}
+
+.address-label {
+    font-size: 0.75rem;
+    margin-left: 32px;
 }
 
 .search-container {
@@ -29,4 +35,56 @@
 .map {
     width: 80%;
     height: 100vh;
+}
+
+.combobox-input {
+    border: none;
+    min-width: 0;
+    outline: 0;
+    padding: 0;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    color: inherit;
+    background-color: rgb(255, 255, 255);
+    text-overflow: ellipsis;
+    height: 32px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.highlight {
+    padding-bottom: 1px;
+    border-bottom: 2px solid #ce0707
+}
+
+.data-find-container {
+    display: flex;
+    flex-direction: column;
+    margin: 32px 0px;
+    border: 1px solid black;
+    padding: 16px;
+    height: 265px;
+    border-radius: 46px;
+    background: #4e9af8;
+    box-shadow: 23px 23px 43px #85b4ff23,
+        -23px -23px 43px #0073ff1f;
+    justify-content: center;
+    align-items: center;
+}
+
+.data-find-container p {
+    flex: 1;
+    color: rgb(0, 0, 0);
+}
+
+.result-container {
+    font-weight: 600;
+    padding-bottom: 1px;
+}
+
+.result {
+    font-weight: 400;
+    font-style: oblique;
+    margin-left: 3px;
 }

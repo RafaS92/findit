@@ -8,6 +8,8 @@ import {
 } from "@react-google-maps/api";
 import "../css/map.css"
 import Places from "./Places";
+import Distance from "./Distantce";
+
 
 
 const generateBusinesses = (position) => {
@@ -39,21 +41,21 @@ export default function Map() {
   const options = useMemo(()=> ({disabledDefaultUI: true,clickableIcons: false,}),[])
 
   const handlePlaceChange = (place) => {
-  let businesses = generateBusinesses(place)
-  setPlace(place);
-  setBusinesses(businesses);
-  mapRef.current?.panTo(place)
+    let businesses = generateBusinesses(place)
+    setPlace(place);
+    setBusinesses(businesses);
+    mapRef.current?.panTo(place)
   }
 
     const fetchDirections = (business) => {
     if (!place) return;
 
-    const service = new google.maps.DirectionsService();
+    const service = new window.google.maps.DirectionsService();
     service.route(
       {
-        origin: business,
-        destination: place,
-        travelMode: google.maps.TravelMode.DRIVING,
+        origin: place,
+        destination: business,
+        travelMode: window.google.maps.TravelMode.DRIVING,
       },
       (result, status) => {
         if (status === "OK" && result) {
@@ -67,8 +69,11 @@ export default function Map() {
   return (
     <div className="container-map">
         <div className="controls">
-            <h1>Commute</h1>
+            <h1>Find Retailers</h1>
             <Places setPlace={(e) => handlePlaceChange(e)}/>
+            {!place && <p className="address-label">Please enter the address of your base.</p>}
+            {/* To access default routes/first leg NOTE: "leg" refers to a segment of a route that occurs between two waypoints*/}
+            {directions && <Distance directions={directions} leg={directions.routes[0].legs[0]} />}
         </div>
         <div className="map">
             <GoogleMap zoom={10}
@@ -77,7 +82,14 @@ export default function Map() {
               options={options}
               onLoad={onLoad}
             >
-              {directions && <DirectionsRenderer directions={directions} />}
+              {directions && 
+              <DirectionsRenderer 
+                directions={directions}
+                options={{
+                    zIndex: 50,
+                    strokeColor: "#002aff",
+                    strokeWeight: 5,
+              }} />}
               {place && (
                 <>
                   <Marker  position={place} icon={"http://maps.google.com/mapfiles/ms/icons/blue-dot.png"} size={10} />
@@ -87,7 +99,6 @@ export default function Map() {
                         <Marker
                           key={business.lat + business.lng}
                           position={business}
-                          icon={"http://maps.google.com/mapfiles/ms/icons/red-dot.png"}
                           clusterer={clusterer}
                           size={10}
                           onClick={() => {

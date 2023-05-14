@@ -12,6 +12,7 @@ import {
 } from "@reach/combobox";
 import "@reach/combobox/styles.css";
 import ImageSearchIcon from '@mui/icons-material/ImageSearch';
+import Input from '@mui/joy/Input';
 
 function Places({setPlace}) {
     const {ready,value,setValue,suggestions:{status,data},clearSuggestions} = usePlacesAutocomplete()
@@ -34,7 +35,7 @@ function Places({setPlace}) {
           onChange={e => setValue(e.target.value)} 
           className="combobox-input"
           disabled={!ready}
-          placeholder="Where you going?"
+          placeholder="Ex:742 Evergreen Terrace St"
           />
         </div>
 
