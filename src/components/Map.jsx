@@ -25,9 +25,11 @@ const generateBusinesses = (position) => {
 
 export default function Map() {
   
-  const [place,setPlace] = useState()
-  const [businesses,setBusinesses] = useState([])
-  const mapRef = useRef()
+  const [place,setPlace] = useState();
+  const [businesses,setBusinesses] = useState([]);
+  const [directions,setDirections] = useState();
+  const mapRef = useRef();
+
 
   //To ensure values will keep the same every re-render.
   const center = useMemo(()=>({lat:parseFloat("43"),lng:parseFloat("-80") }),[]) 
@@ -41,8 +43,26 @@ export default function Map() {
   setPlace(place);
   setBusinesses(businesses);
   mapRef.current?.panTo(place)
-    console.log(businesses)
   }
+
+    const fetchDirections = (business) => {
+    if (!place) return;
+
+    const service = new google.maps.DirectionsService();
+    service.route(
+      {
+        origin: business,
+        destination: place,
+        travelMode: google.maps.TravelMode.DRIVING,
+      },
+      (result, status) => {
+        if (status === "OK" && result) {
+          setDirections(result);
+        }
+      }
+    );
+  };
+
 
   return (
     <div className="container-map">
@@ -57,6 +77,7 @@ export default function Map() {
               options={options}
               onLoad={onLoad}
             >
+              {directions && <DirectionsRenderer directions={directions} />}
               {place && (
                 <>
                   <Marker  position={place} icon={"http://maps.google.com/mapfiles/ms/icons/blue-dot.png"} size={10} />
@@ -69,6 +90,9 @@ export default function Map() {
                           icon={"http://maps.google.com/mapfiles/ms/icons/red-dot.png"}
                           clusterer={clusterer}
                           size={10}
+                          onClick={() => {
+                          fetchDirections(business)
+                          }}
                         />))}
                   </MarkerClusterer>
                   <Circle center={place} radius={5000} options={nearOptions} />
