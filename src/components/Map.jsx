@@ -9,10 +9,11 @@ import {
 import "../css/map.css"
 import Places from "./Places";
 
+
 const generateBusinesses = (position) => {
   const businesses = [];
   for (let i = 0; i < 50; i++) {
-    const direction = Math.random() < 0.2 ? -2 : 2;
+    const direction = Math.random() < 0.5 ? -4 : 4;
     businesses.push({
       lat: position.lat + Math.random() / direction,
       lng: position.lng + Math.random() / direction,
@@ -58,8 +59,18 @@ export default function Map() {
             >
               {place && (
                 <>
-                  <Marker position={place} icon={"http://maps.google.com/mapfiles/ms/icons/blue-dot.png"} />
-                  {businesses.length > 0 && businesses.map(business => <Marker key={business.lat + business.lng} position={business} />)}
+                  <Marker  position={place} icon={"http://maps.google.com/mapfiles/ms/icons/blue-dot.png"} size={10} />
+                  <MarkerClusterer>
+                    {(clusterer) => 
+                      businesses.map((business) => (
+                        <Marker
+                          key={business.lat + business.lng}
+                          position={business}
+                          icon={"http://maps.google.com/mapfiles/ms/icons/red-dot.png"}
+                          clusterer={clusterer}
+                          size={10}
+                        />))}
+                  </MarkerClusterer>
                   <Circle center={place} radius={5000} options={nearOptions} />
                   <Circle center={place} radius={20000} options={farOptions} />
                   <Circle center={place} radius={40000} options={lastOptions} />
