@@ -40,7 +40,7 @@ function Team() {
     <>
         <div className='team-container'>
             <div className='team-intro'>
-                Meet our team!
+                <strong>Meet our team!</strong>
             </div>
             <div className='team-cards-container'>
                 {data.length > 0 ? data.map((employee) => {
