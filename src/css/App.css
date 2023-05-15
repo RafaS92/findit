@@ -5,7 +5,7 @@
 }
 
 .nav-container {
-  height: 3em;
+  height: 4em;
   background-color: #147dff;
   display: flex;
   align-items: center;
@@ -26,6 +26,20 @@
 .nav-sec-1 {
   display: flex;
   justify-content: start;
+}
+
+.nav-sec-1 {
+  display: flex;
+  justify-content: start;
+}
+
+.logo {
+  width: 100%;
+}
+
+.small-img {
+  max-width: 105px;
+  ;
 }
 
 .nav-sec-2 {

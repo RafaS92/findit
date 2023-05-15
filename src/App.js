@@ -1,4 +1,4 @@
-import "./App.css";
+import "./css/App.css";
 import "./css/main.css";
 import {
   createBrowserRouter,
@@ -11,16 +11,15 @@ import {
 import Comute from "./components/Comute";
 import Home from "./components/Home ";
 import About from "./components/About";
+import finderImg from "./imgs/Finditmin.png.png"
 
 function App() {
   const Root = () => {
     return (
       <>
         <div className="nav-container">
-          <div className="nav-sec-1">
-            <Link className="nav-element" to="/perlas">Home</Link>
-          </div>
           <div className="nav-sec-2">
+          <Link className="nav-element" to="/">Home</Link>
             <Link className="nav-element" to="/">Home</Link>
             <Link className="nav-element" to="comute">Comute</Link>
             <Link className="nav-element" to="about">About</Link>

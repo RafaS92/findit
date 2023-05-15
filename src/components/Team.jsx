@@ -1,5 +1,7 @@
 import React from 'react'
-import TeamCard from './TeamCard'
+
+import ActionAreaCard from "../utils/ActionCard";
+
 
 function Team() {
 
@@ -40,11 +42,11 @@ function Team() {
     <>
         <div className='team-container'>
             <div className='team-intro'>
-                <strong>Meet our team!</strong>
+                <h1>Meet our team!</h1>
             </div>
             <div className='team-cards-container'>
                 {data.length > 0 ? data.map((employee) => {
-                    return <TeamCard 
+                    return <ActionAreaCard 
                     key={employee.id} 
                     name={employee.name}
                     position={employee.position}

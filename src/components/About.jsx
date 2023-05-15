@@ -14,7 +14,7 @@ function About() {
                 <p>Commodo do Lorem sit est enim. Labore officia do tempor enim dolor irure reprehenderit. Lorem et ullamco sit culpa in pariatur et. Ad elit veniam anim nisi in aliqua culpa. Officia veniam nulla sunt ut veniam commodo aliquip et laboris.</p>
             </div>
             <div className='about-sec-1-img'>
-                <img src="https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*" alt="about-img" />
+                <img src="https://cdn.wccftech.com/wp-content/uploads/2017/03/Google-Maps.jpg" alt="about-img" />
             </div>
         </div>
         <Service />
