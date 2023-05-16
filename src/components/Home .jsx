@@ -37,7 +37,7 @@ function Home() {
                 sx={{ color: "black", backgroundColor: "lightGray" }}
                 variant="contained"
               >
-                Contact
+                About
               </Button>
             </Link>
           </Stack>

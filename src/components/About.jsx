@@ -1,6 +1,7 @@
 import React from "react";
 import Service from "./Services";
 import Team from "./Team";
+import Footer from "./Footer";
 
 function About() {
   return (
@@ -11,7 +12,7 @@ function About() {
           data-aos-duration="1000"
           data-aos="fade-right"
         >
-          <h2>About us</h2>
+          <h1>About us</h1>
           <p>
             Commodo do Lorem sit est enim. Labore officia do tempor enim dolor
             irure reprehenderit. Lorem et ullamco sit culpa in pariatur et. Ad
@@ -47,6 +48,7 @@ function About() {
       </div>
       <Service />
       <Team />
+      <Footer />
     </div>
   );
 }
