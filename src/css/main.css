@@ -20,9 +20,108 @@ input {
     color: red;
 }
 
+/* HOME SECTION */
+.home-div {
+    height: 92vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0px 16px;
+    position: relative;
+    overflow-y: hidden;
+    
+}
+
+.home-div:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    background-size: cover;
+    background-color: #167dff73;
+    background-image: url('https://wallpapers.com/images/featured/lpblmpaoeh2kosqj.jpg');
+}
+
+.homepage-content {
+    display: flex;
+    opacity:1 ;
+}
+
+.homepage-content-text {
+    flex:1;
+    display: flex;
+    color: white;
+    flex-direction: column;
+    justify-content: center;
+    padding: 16px;
+    padding-left: 10rem;
+        backdrop-filter: blur(2px) saturate(200%);
+            -webkit-backdrop-filter: blur(2px) saturate(200%);
+            background-color:#167fffa5;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.125);
+            border-radius: 50px;
+                box-shadow: 16px 16px 32px #a6a6a6,
+                    -16px -16px 32px #ffffff;
+}
+
+.homepage-content-img {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    z-index: 50;
+}
+
+.homepage-content-img img {
+    width: 100%;
+    max-width: 250px;
+}
+
+.small-title {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    margin-left: 2px;
+}
+
+.title-home {
+    font-size: clamp(2.2vh, 5vw, 4.5rem);
+    margin: 0 !important;
+    text-transform: uppercase;
+    color: rgb(18, 17, 17) !important;
+}
+
+.home-description {
+    font-size: 1.2rem;
+    font-weight: 500;
+    opacity: 1;
+    margin: 10px 0px;
+}
+
+.subtitle-home {
+    font-size: clamp(1.5vh, 2.5vw, 2.5rem);
+    font-family: 'Paytone One', sans-serif;
+    text-transform: uppercase;
+    font-weight: 600;
+    opacity: 0.9;
+    margin-bottom: 16px;
+    margin-left: 2px;
+}
+
 /* ABOUT SECTION */
 
-
+.about-page {
+    padding: 16px;
+}
 
 .cards {
     padding: 4rem;

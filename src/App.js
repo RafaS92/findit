@@ -11,23 +11,31 @@ import {
 import Comute from "./components/Comute";
 import Home from "./components/Home ";
 import About from "./components/About";
-import finderImg from "./imgs/Finditmin.png.png"
+import { useEffect } from "react";
+import AOS from "aos";
 
 function App() {
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   const Root = () => {
     return (
       <>
         <div className="nav-container">
           <div className="nav-sec-2">
-          <Link className="nav-element" to="/">Home</Link>
-            <Link className="nav-element" to="/">Home</Link>
-            <Link className="nav-element" to="comute">Comute</Link>
-            <Link className="nav-element" to="about">About</Link>
+            <Link className="nav-element" to="/">
+              Home
+            </Link>
+            <Link className="nav-element" to="findit">
+              Find it
+            </Link>
+            <Link className="nav-element" to="about">
+              About
+            </Link>
           </div>
         </div>
-        <div>
-          <Outlet />
-        </div>
+        <Outlet />
       </>
     );
   };
@@ -36,7 +44,7 @@ function App() {
     createRoutesFromElements(
       <Route exact path="/" element={<Root />}>
         <Route exact index element={<Home />} />
-        <Route exact path="/comute" element={<Comute />} />
+        <Route exact path="/findit" element={<Comute />} />
         <Route exact path="/about" element={<About />} />
       </Route>
     )

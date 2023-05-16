@@ -10,9 +10,9 @@ function ServicesItem({path,label,src,text,text2}) {
                 </figure>
 
                 <div className="cards__item__info">
-                    <h5 className="cards__item__text">
+                    <p className="cards__item__text">
                         {text}
-                    </h5>
+                    </p>
                     <p className="cards__item__text">{text2}</p>
                 </div>
             </a>

@@ -10,25 +10,23 @@ import "../css/map.css"
 import Places from "./Places";
 import Distance from "./Distantce";
 
-
-
 const generateBusinesses = (position) => {
   const businesses = [];
   for (let i = 0; i < 50; i++) {
-    const direction = Math.random() < 0.5 ? -4 : 4;
+    const direction = Math.random() < 0.4 ? -4 : 4;
     businesses.push({
       lat: position.lat + Math.random() / direction,
       lng: position.lng + Math.random() / direction,
     });
   }
+ 
   return businesses;
 };
 
 
-export default function Map() {
+export default function Map({place,businesses,setBusinesses,setPlace}) {
   
-  const [place,setPlace] = useState();
-  const [businesses,setBusinesses] = useState([]);
+
   const [directions,setDirections] = useState();
   const mapRef = useRef();
 
@@ -45,6 +43,7 @@ export default function Map() {
     setPlace(place);
     setBusinesses(businesses);
     mapRef.current?.panTo(place)
+    console.log(place)
   }
 
     const fetchDirections = (business) => {
