@@ -1,12 +1,8 @@
 import { useLoadScript } from "@react-google-maps/api";
-import { useState } from "react";
 import Map from "./Map";
 import React from "react";
 
-function Comute() {
-  const [place, setPlace] = useState();
-  const [businesses, setBusinesses] = useState([]);
-
+function FindIt() {
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: "AIzaSyAVmLdsY4QISPZDOd39pTsFpyfxuxYPxXk",
     libraries: ["places"],
@@ -16,16 +12,11 @@ function Comute() {
     return <div>Loading...</div>;
   } else {
     return (
-      <div>
-        <Map
-          place={place}
-          businesses={businesses}
-          setPlace={setPlace}
-          setBusinesses={setBusinesses}
-        />
+      <div className="">
+        <Map />
       </div>
     );
   }
 }
 
-export default Comute;
+export default FindIt;

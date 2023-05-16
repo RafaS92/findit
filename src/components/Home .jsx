@@ -44,12 +44,12 @@ function Home() {
         </div>
         <div
           className="homepage-content-img"
-          data-aos="fade-left"
+          data-aos="fade-up"
           data-aos-duration="1000"
         >
           <img
             alt=""
-            src="https://www.pngall.com/wp-content/uploads/5/Google-Maps-Location-Mark.png"
+            src="https://eo-upload.s3.amazonaws.com/images-landing/Google-Maps-Location-Mark-min.png"
           />
         </div>
       </div>

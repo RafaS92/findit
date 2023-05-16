@@ -66,7 +66,7 @@
     padding: 16px;
     height: 265px;
     border-radius: 46px;
-    background: #4e9af8;
+    background: #167dff;
     box-shadow: 23px 23px 43px #85b4ff23,
         -23px -23px 43px #0073ff1f;
     justify-content: center;
@@ -75,7 +75,7 @@
 
 .data-find-container p {
     flex: 1;
-    color: rgb(0, 0, 0);
+    color: rgb(233, 233, 233);
 }
 
 .result-container {
@@ -87,4 +87,23 @@
     font-weight: 400;
     font-style: oblique;
     margin-left: 3px;
+    color: rgb(198, 235, 255);
+}
+
+.chart-container {
+    margin-top: 64px;
+    background-color: #167dff;
+    border-radius: 25px;
+    padding: 6px;
+}
+
+.chart-title {
+    color: white;
+    text-align: center;
+    margin: 16px 0px;
+}
+
+.select-label{
+    text-align: center;
+    margin-top: 16px;
 }
