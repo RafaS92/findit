@@ -57,6 +57,7 @@ export default function Map() {
     []
   );
 
+  //Generate businesses randomly
   const generateBusinesses = (position) => {
     const businesses = [];
     for (let i = 0; i < 50; i++) {
@@ -76,6 +77,7 @@ export default function Map() {
     let nearbyBusinesses = 0;
     let mediumBusinesses = 0;
     let farBussinesses = 0;
+    let result = [nearbyBusinesses, mediumBusinesses, farBussinesses];
 
     businesses?.forEach((business) => {
       if (
@@ -92,7 +94,7 @@ export default function Map() {
         farBussinesses++;
       }
 
-      setSeries([nearbyBusinesses, mediumBusinesses, farBussinesses]);
+      setSeries((initialArray) => [...initialArray, result]);
     });
   };
 

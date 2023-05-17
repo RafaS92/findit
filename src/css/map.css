@@ -53,6 +53,11 @@
     border-top-right-radius: 5px;
 }
 
+.find-title{
+    margin-bottom: 8px;
+    color: white;
+}
+
 .highlight {
     padding-bottom: 1px;
     border-bottom: 2px solid #ce0707

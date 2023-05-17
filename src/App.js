@@ -8,7 +8,7 @@ import {
   Link,
   Outlet,
 } from "react-router-dom";
-import FindIt from "./components/Findit";
+import Findit from "./components/Findit";
 import Home from "./components/Home ";
 import About from "./components/About";
 import { useEffect } from "react";
@@ -44,7 +44,7 @@ function App() {
     createRoutesFromElements(
       <Route exact path="/" element={<Root />}>
         <Route exact index element={<Home />} />
-        <Route exact path="/findit" element={<FindIt />} />
+        <Route exact path="/findit" element={<Findit />} />
         <Route exact path="/about" element={<About />} />
       </Route>
     )

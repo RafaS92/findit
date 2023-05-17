@@ -1,10 +1,10 @@
 import { useLoadScript } from "@react-google-maps/api";
 import Map from "./Map";
-import React from "react";
-
 function FindIt() {
+  let MapsApi = process.env.REACT_APP_MAPS_API_KEY;
+
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: "AIzaSyAVmLdsY4QISPZDOd39pTsFpyfxuxYPxXk",
+    googleMapsApiKey: MapsApi,
     libraries: ["places"],
   });
 
@@ -12,7 +12,7 @@ function FindIt() {
     return <div>Loading...</div>;
   } else {
     return (
-      <div className="">
+      <div>
         <Map />
       </div>
     );

@@ -24,7 +24,6 @@ function Home() {
           <Stack spacing={2} direction="row">
             <Link className="nav-element" to="findit">
               <Button
-                set
                 sx={{ color: "white", backgroundColor: "green" }}
                 variant="contained"
               >
@@ -33,7 +32,6 @@ function Home() {
             </Link>
             <Link className="nav-element" to="about">
               <Button
-                set
                 sx={{ color: "black", backgroundColor: "lightGray" }}
                 variant="contained"
               >
