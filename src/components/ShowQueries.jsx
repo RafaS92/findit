@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { db } from "../firebase-config";
 import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
+import QueryCard from "./QueryCard";
 
 function ShowQueries() {
   const [queries, setQueries] = useState([]);
@@ -33,34 +34,13 @@ function ShowQueries() {
       {queries.length > 0 ? (
         queries.map((query) => {
           return (
-            <div className="query-container" key={query.id}>
-              <div className="query-title">
-                <h4>City:{query.City}</h4>
-              </div>
-              <div className="query-details">
-                <p>
-                  <span>Latitude: </span>
-                  {query.Lat}
-                </p>
-                <p>
-                  <span>Longitude: </span>
-                  {query.Lng}
-                </p>
-                <p>
-                  <span>Date: </span> {query.DateOfSearch}
-                </p>
-              </div>
-              <button
-                className="delete-button"
-                onClick={() => handleDeleteClick(query.id)}
-              >
-                Delete
-              </button>
-            </div>
+            <QueryCard query={query} handleQueryDelete={handleDeleteClick} />
           );
         })
       ) : (
-        <h2>Please make some queries first!</h2>
+        <h2 data-aos="fade-up" data-aos-delay="1000">
+          Please make some queries!
+        </h2>
       )}
     </div>
   );
