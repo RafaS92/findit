@@ -10,6 +10,8 @@ import "../css/map.css";
 import Places from "./Places";
 import Distance from "./Distantce";
 import Chart from "react-apexcharts";
+import { db } from "../firebase-config";
+import { collection, addDoc } from "firebase/firestore";
 
 export default function Map() {
   const [place, setPlace] = useState();
@@ -17,6 +19,7 @@ export default function Map() {
   const [directions, setDirections] = useState();
   const [series, setSeries] = useState([]);
   const mapRef = useRef();
+  const searchesCollectionRef = collection(db, "Searches");
 
   const optionsChart = {
     series: series,
@@ -77,7 +80,6 @@ export default function Map() {
     let nearbyBusinesses = 0;
     let mediumBusinesses = 0;
     let farBussinesses = 0;
-    let result = [nearbyBusinesses, mediumBusinesses, farBussinesses];
 
     businesses?.forEach((business) => {
       if (
@@ -94,7 +96,14 @@ export default function Map() {
         farBussinesses++;
       }
 
-      setSeries((initialArray) => [...initialArray, result]);
+      setSeries([nearbyBusinesses, mediumBusinesses, farBussinesses]);
+    });
+  };
+
+  const savePlaceInDb = async (place) => {
+    await addDoc(searchesCollectionRef, {
+      Lat: place.lat,
+      Lng: place.lng,
     });
   };
 
@@ -102,6 +111,7 @@ export default function Map() {
     let businesses = generateBusinesses(place);
     setPlace(place);
     setBusinesses(businesses);
+    savePlaceInDb(place);
     mapRef.current?.panTo(place);
   };
 

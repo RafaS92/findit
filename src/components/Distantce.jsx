@@ -1,11 +1,12 @@
 import React from "react";
 
-const gasLitreCost = 0.838;
-
 export default function Distance({ leg }) {
   if (!leg.distance || !leg.duration) return null;
 
-  const cost = Math.floor((leg.distance.value / 1000) * gasLitreCost);
+  const gasLitreCost = 0.838;
+  const kilometers = leg.distance.value / 1000;
+  const gasNeededPerKm = kilometers / 25;
+  const cost = Math.round(gasNeededPerKm * gasLitreCost * 100) / 100;
 
   const shortAddress = (str) => {
     let substr = str.substring(0, str.indexOf(","));
