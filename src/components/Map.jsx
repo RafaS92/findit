@@ -101,7 +101,7 @@ export default function Map() {
     });
   };
 
-  const getCityByCoordinates = async (place) => {
+  const getCityNameByCoordinates = async (place) => {
     try {
       const response = await fetch(
         `https://maps.googleapis.com/maps/api/geocode/json?latlng=${place.lat},${place.lng}&key=${MapsApi}`
@@ -151,14 +151,17 @@ export default function Map() {
     await addDoc(searchesCollectionRef, {
       Lat: place.lat,
       Lng: place.lng,
-      Date: formattedDateTime,
+      DateOfSearch: formattedDateTime,
       City: city,
     });
   };
 
   const handlePlaceChange = async (place) => {
     let businesses = generateBusinesses(place);
-    let city = await getCityByCoordinates({ lat: place.lat, lng: place.lng });
+    let city = await getCityNameByCoordinates({
+      lat: place.lat,
+      lng: place.lng,
+    });
     setPlace(place);
     setBusinesses(businesses);
     savePlaceInDb(place, city);
