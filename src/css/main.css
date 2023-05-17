@@ -272,10 +272,21 @@ strong {
     .about-sec-1 {
         flex-direction: column;
         margin-top: 32px;
-        }
+        height: inherit;
+    }
+
+    .about-sec-1-text {
+        padding: 0px;
+    }
 
     .cards__container {
         max-width: 1120px;
+    }
+
+    .about-sec-1-img {
+        width: 100%;
+        max-width: 20em !important;
+        border-radius: 50px;
     }
 }
 
