@@ -22,6 +22,7 @@ function ShowQueries() {
           <div className="query-container" key={query.id}>
             <p>Latitude: {query.Lat}</p>
             <p>Longitude:{query.Lng}</p>
+            <p>City:{query.City}</p>
           </div>
         );
       })}

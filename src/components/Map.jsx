@@ -20,6 +20,7 @@ export default function Map() {
   const [series, setSeries] = useState([]);
   const mapRef = useRef();
   const searchesCollectionRef = collection(db, "Searches");
+  const MapsApi = process.env.REACT_APP_MAPS_API_KEY;
 
   const optionsChart = {
     series: series,
@@ -100,18 +101,67 @@ export default function Map() {
     });
   };
 
-  const savePlaceInDb = async (place) => {
+  const getCityByCoordinates = async (place) => {
+    try {
+      const response = await fetch(
+        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${place.lat},${place.lng}&key=${MapsApi}`
+      );
+      const data = await response.json();
+
+      if (data.status === "OK") {
+        let cityName = "";
+        for (let i = 0; i < data.results.length; i++) {
+          for (let j = 0; j < data.results[i].address_components.length; j++) {
+            const types = data.results[i].address_components[j].types;
+            if (
+              types.includes("locality") ||
+              types.includes("sublocality") ||
+              types.includes("administrative_area_level_1")
+            ) {
+              cityName = data.results[i].address_components[j].long_name;
+              break;
+            }
+          }
+          if (cityName !== "") {
+            break;
+          }
+        }
+        return cityName;
+      } else {
+        return "";
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
+  const savePlaceInDb = async (place, city = "Not found") => {
+    let currentDate = new Date();
+    var formattedDateTime = currentDate.toLocaleString("en-US", {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      second: "numeric",
+      timeZone: "UTC",
+      timeZoneName: "short",
+    });
+
     await addDoc(searchesCollectionRef, {
       Lat: place.lat,
       Lng: place.lng,
+      Date: formattedDateTime,
+      City: city,
     });
   };
 
-  const handlePlaceChange = (place) => {
+  const handlePlaceChange = async (place) => {
     let businesses = generateBusinesses(place);
+    let city = await getCityByCoordinates({ lat: place.lat, lng: place.lng });
     setPlace(place);
     setBusinesses(businesses);
-    savePlaceInDb(place);
+    savePlaceInDb(place, city);
     mapRef.current?.panTo(place);
   };
 
