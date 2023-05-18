@@ -1,11 +1,20 @@
+/*
+* Prefixed by:
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
 .container-map {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     height: 100vh;
 }
 
 .controls {
     width: 25%;
-    min-width:450px;
+    min-width: 450px;
     padding: 1rem;
     background-color: whitesmoke;
     color: black;
@@ -22,8 +31,14 @@
 }
 
 .search-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     margin-top: 12px;
 }
@@ -43,18 +58,19 @@
     min-width: 0;
     outline: 0;
     padding: 0;
-    -webkit-flex: 1;
     -ms-flex: 1;
+    -webkit-box-flex: 1;
     flex: 1;
     color: inherit;
     background-color: rgb(255, 255, 255);
+    -o-text-overflow: ellipsis;
     text-overflow: ellipsis;
     height: 32px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
 
-.find-title{
+.find-title {
     margin-bottom: 8px;
     color: white;
 }
@@ -65,7 +81,12 @@
 }
 
 .data-find-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
     margin: 32px 0px;
     border: 1px solid black;
@@ -73,13 +94,21 @@
     height: 265px;
     border-radius: 46px;
     background: #167dff;
+    -webkit-box-shadow: 23px 23px 43px #85b4ff23,
+        -23px -23px 43px #0073ff1f;
     box-shadow: 23px 23px 43px #85b4ff23,
         -23px -23px 43px #0073ff1f;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
 }
 
 .data-find-container p {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
     flex: 1;
     color: rgb(233, 233, 233);
 }
@@ -109,7 +138,7 @@
     margin: 16px 0px;
 }
 
-.select-label{
+.select-label {
     text-align: center;
     margin-top: 16px;
 }

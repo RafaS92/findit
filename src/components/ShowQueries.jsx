@@ -30,19 +30,22 @@ function ShowQueries() {
   };
 
   return (
-    <div className="queries-container">
-      {queries.length > 0 ? (
-        queries.map((query) => {
-          return (
-            <QueryCard query={query} handleQueryDelete={handleDeleteClick} />
-          );
-        })
-      ) : (
-        <h2 data-aos="fade-up" data-aos-delay="1000">
-          Please make some queries!
-        </h2>
-      )}
-    </div>
+    <>
+      <h1 className="queries-title">Queries</h1>
+      <div className="queries-container">
+        {queries.length > 0 ? (
+          queries.map((query) => {
+            return (
+              <QueryCard query={query} handleQueryDelete={handleDeleteClick} />
+            );
+          })
+        ) : (
+          <h2 data-aos="fade-up" data-aos-delay="1000">
+            Please make some queries!
+          </h2>
+        )}
+      </div>
+    </>
   );
 }
 
